@@ -1,0 +1,838 @@
+{
+  "schemaVersion": 1,
+  "name": "Inkwell Sources",
+  "sources": [
+    {
+      "schemaVersion": 2,
+      "version": 1,
+      "status": "active",
+      "id": "DasuiTL",
+      "name": "DasuiTL",
+      "baseURL": "https://dasuitl.com",
+      "allowedHosts": [
+        "dasuitl.com",
+        "www.dasuitl.com"
+      ],
+      "search": {
+        "path": "/completed/",
+        "additionalPaths": [
+          "/on-hold/"
+        ],
+        "filterQuery": true
+      },
+      "browse": {
+        "path": "/completed/",
+        "additionalPaths": [
+          "/on-hold/"
+        ],
+        "filterQuery": true
+      },
+      "catalog": {
+        "path": "{novelURL}"
+      },
+      "selectors": {
+        "resultLink": "a",
+        "resultTitle": "inkwell-unused",
+        "resultImage": "img",
+        "author": "inkwell-unused",
+        "summary": "inkwell-unused",
+        "cover": ".entry-content img",
+        "genres": "inkwell-unused",
+        "chapterTitle": "inkwell-unused",
+        "nextPage": "",
+        "content": ".entry-content",
+        "remove": "script, style, nav, iframe, noscript, .ads, .ad, .advertisement, .sharedaddy, .wp-block-buttons, .code-block, .entry-meta, .post-navigation",
+        "emptySearchPhrases": [
+          "No results found"
+        ],
+        "result": "#menu-item-756 .sub-menu a[href], .entry-content a[href^=\"https://dasuitl.com/\"]:not([href*=\"/wn/\"])",
+        "title": "h1.entry-title",
+        "chapter": ".entry-content a[href*=\"dasuitl.com/wn/\"]"
+      },
+      "notice": "Searches the current, completed and on-hold project indexes by title."
+    },
+    {
+      "schemaVersion": 4,
+      "version": 3,
+      "status": "active",
+      "id": "JadeScrolls",
+      "name": "JadeScrolls",
+      "baseURL": "https://jadescrolls.com",
+      "allowedHosts": [
+        "jadescrolls.com",
+        "api.jadescrolls.com"
+      ],
+      "notice": "Uses the website’s public API. Locked chapters require access on the original website.",
+      "selectors": {
+        "resultLink": "a",
+        "resultTitle": "inkwell-unused",
+        "resultImage": "img",
+        "author": "inkwell-unused",
+        "summary": "inkwell-unused",
+        "cover": ".entry-content img",
+        "genres": "inkwell-unused",
+        "chapterTitle": "inkwell-unused",
+        "nextPage": "",
+        "content": "body",
+        "remove": "script, style, nav, iframe, h1",
+        "emptySearchPhrases": [
+          "No results found"
+        ],
+        "result": "inkwell-unused",
+        "title": "inkwell-unused",
+        "chapter": "inkwell-unused"
+      },
+      "browse": {
+        "path": "https://api.jadescrolls.com/api/novels/list",
+        "format": "json",
+        "arrayKey": "data",
+        "linkKey": "slug",
+        "titleKey": "title",
+        "imageKey": "cover_image",
+        "linkBase": "https://jadescrolls.com/novel/",
+        "query": {
+          "limit": "30",
+          "page": "1",
+          "q": "{query}"
+        },
+        "pageParameter": "page",
+        "currentPageKey": "meta.page",
+        "totalPagesKey": "meta.total_pages"
+      },
+      "search": {
+        "path": "https://api.jadescrolls.com/api/novels/list",
+        "format": "json",
+        "arrayKey": "data",
+        "linkKey": "slug",
+        "titleKey": "title",
+        "imageKey": "cover_image",
+        "linkBase": "https://jadescrolls.com/novel/",
+        "query": {
+          "limit": "30",
+          "page": "1",
+          "q": "{query}"
+        },
+        "pageParameter": "page",
+        "currentPageKey": "meta.page",
+        "totalPagesKey": "meta.total_pages"
+      },
+      "details": {
+        "path": "https://api.jadescrolls.com/api/novels",
+        "format": "json",
+        "query": {
+          "slug": "{slug}"
+        },
+        "titleKey": "title",
+        "authorKey": "author_name",
+        "summaryKey": "synopsis",
+        "imageKey": "cover_image"
+      },
+      "catalog": {
+        "path": "https://api.jadescrolls.com/api/novels-chapter/{slug}/chapters/list",
+        "query": {
+          "limit": "1000",
+          "page": "1",
+          "sortOrder": "asc"
+        },
+        "format": "json",
+        "arrayKey": "data",
+        "linkKey": "id",
+        "titleKey": "title",
+        "orderKey": "chapter_number",
+        "linkBase": "{novelURL}/",
+        "pageParameter": "page",
+        "currentPageKey": "meta.page",
+        "totalPagesKey": "meta.total_pages",
+        "totalCountKey": "meta.total",
+        "accessKey": "type",
+        "freeValue": "FREE",
+        "lockedValues": [
+          "PREMIUM",
+          "SUBSCRIPTION"
+        ],
+        "canAccessKey": "user_metadata.has_access"
+      },
+      "content": {
+        "path": "https://api.jadescrolls.com/api/novels-chapter/{bookSlug}/chapters/{chapterSlug}",
+        "format": "json",
+        "bodyKey": "content",
+        "accessKey": "user_metadata.has_access"
+      },
+      "filters": [
+        {
+          "id": "genre",
+          "name": "Genre",
+          "defaultValue": "",
+          "options": [
+            {
+              "name": "Any genre",
+              "value": ""
+            },
+            {
+              "name": "Action",
+              "value": "34e5c717-8648-4cc1-b796-b6d02d49d170"
+            },
+            {
+              "name": "Comedy",
+              "value": "c3c870a5-825c-4f94-b5f6-f51a367fee02"
+            },
+            {
+              "name": "Fantasy",
+              "value": "c8b536fa-9436-4b93-90fb-8a7bb2be8550"
+            },
+            {
+              "name": "Mystery",
+              "value": "4bb0a253-558c-4e32-851d-2c2eabc2ce2e"
+            },
+            {
+              "name": "Romance",
+              "value": "8071a9d5-9e46-42ed-aa3a-bdaabe2b62a7"
+            },
+            {
+              "name": "Sci-Fi",
+              "value": "7551dfdd-5fea-4a46-a4dd-e4cfd666a40e"
+            },
+            {
+              "name": "Slice of life",
+              "value": "f459e8b2-4976-427b-a576-7736ed6eaed9"
+            },
+            {
+              "name": "Sports",
+              "value": "913b791f-b322-464f-8450-1548f042fe0b"
+            },
+            {
+              "name": "Thriller",
+              "value": "7f9ea4f3-df3d-44a5-8cbb-062b2d635029"
+            }
+          ]
+        },
+        {
+          "id": "sort",
+          "name": "Sort by",
+          "defaultValue": "created_at",
+          "options": [
+            {
+              "name": "Recently added",
+              "value": "created_at"
+            },
+            {
+              "name": "Recently updated",
+              "value": "updated_at"
+            },
+            {
+              "name": "Most read",
+              "value": "views"
+            },
+            {
+              "name": "Top rated",
+              "value": "rating"
+            },
+            {
+              "name": "Title",
+              "value": "title"
+            },
+            {
+              "name": "Chapter count",
+              "value": "chapter_count"
+            }
+          ]
+        },
+        {
+          "id": "order",
+          "name": "Order",
+          "defaultValue": "desc",
+          "options": [
+            {
+              "name": "Descending",
+              "value": "desc"
+            },
+            {
+              "name": "Ascending",
+              "value": "asc"
+            }
+          ]
+        },
+        {
+          "id": "status",
+          "name": "Status",
+          "defaultValue": "",
+          "options": [
+            {
+              "name": "Any status",
+              "value": ""
+            },
+            {
+              "name": "Completed",
+              "value": "COMPLETED"
+            },
+            {
+              "name": "Ongoing",
+              "value": "ONGOING"
+            }
+          ]
+        }
+      ],
+      "filteredBrowse": {
+        "path": "https://api.jadescrolls.com/api/novels/list",
+        "format": "json",
+        "arrayKey": "data",
+        "linkKey": "slug",
+        "titleKey": "title",
+        "imageKey": "cover_image",
+        "linkBase": "https://jadescrolls.com/novel/",
+        "query": {
+          "limit": "30",
+          "page": "1",
+          "q": "{query}",
+          "genre": "{filter.genre}",
+          "sortBy": "{filter.sort}",
+          "sortOrder": "{filter.order}",
+          "releaseStatus": "{filter.status}"
+        },
+        "pageParameter": "page",
+        "currentPageKey": "meta.page",
+        "totalPagesKey": "meta.total_pages",
+        "omitEmptyQuery": true
+      },
+      "filteredSearch": {
+        "path": "https://api.jadescrolls.com/api/novels/list",
+        "format": "json",
+        "arrayKey": "data",
+        "linkKey": "slug",
+        "titleKey": "title",
+        "imageKey": "cover_image",
+        "linkBase": "https://jadescrolls.com/novel/",
+        "query": {
+          "limit": "30",
+          "page": "1",
+          "q": "{query}",
+          "genre": "{filter.genre}",
+          "sortBy": "{filter.sort}",
+          "sortOrder": "{filter.order}",
+          "releaseStatus": "{filter.status}"
+        },
+        "pageParameter": "page",
+        "currentPageKey": "meta.page",
+        "totalPagesKey": "meta.total_pages",
+        "omitEmptyQuery": true
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "version": 2,
+      "status": "active",
+      "id": "LightNovelTo",
+      "name": "LightNovel.to",
+      "baseURL": "https://lightnovel.to",
+      "allowedHosts": [
+        "lightnovel.to",
+        "www.lightnovel.to"
+      ],
+      "browse": {
+        "path": "/"
+      },
+      "search": {
+        "path": "/search",
+        "query": {
+          "q": "{query}"
+        }
+      },
+      "catalog": {
+        "path": "/api/novel-chapters",
+        "query": {
+          "slug": "{slug}"
+        },
+        "format": "json",
+        "arrayKey": "chapters",
+        "linkKey": "slug",
+        "titleKey": "title",
+        "orderKey": "number",
+        "linkBase": "{novelURL}/"
+      },
+      "selectors": {
+        "resultLink": "a.ln-ncard",
+        "resultTitle": "h3",
+        "resultImage": "img",
+        "title": "h1.ln-dtitle",
+        "author": "a[href^='/author/']",
+        "summary": ".ln-syn",
+        "cover": ".ln-dcv img",
+        "genres": "a[href^='/genre/']",
+        "chapter": ".chapter-list a[href]",
+        "chapterTitle": ".chapter-title",
+        "nextPage": "a[rel=next]",
+        "content": ".ln-prose",
+        "remove": "script, style, nav, iframe, .ads, .ad, .advertisement, .chapter-nav, .hidden",
+        "emptySearchPhrases": [
+          "No novels found",
+          "No results found",
+          "No results",
+          "No matches.",
+          "Nothing matched that."
+        ],
+        "result": "a.ln-ncard"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "version": 1,
+      "status": "retired",
+      "id": "LightNovelWorld",
+      "name": "LightNovelWorld",
+      "baseURL": "https://www.lightnovelworld.com",
+      "allowedHosts": [
+        "www.lightnovelworld.com",
+        "lightnovelworld.com",
+        "www.lightnovelworld.co",
+        "lightnovelworld.co"
+      ],
+      "notice": "LightNovelWorld has shut down its reading service. Existing downloads remain readable. Its replacement NovelCodex is a tracking service, not a novel-reading source."
+    },
+    {
+      "schemaVersion": 3,
+      "version": 4,
+      "status": "active",
+      "id": "NovelFire",
+      "name": "NovelFire",
+      "baseURL": "https://novelfire.net",
+      "allowedHosts": [
+        "novelfire.net",
+        "www.novelfire.net",
+        "novelphoenix.com"
+      ],
+      "browse": {
+        "path": "/genre-all/sort-popular/status-all/all-novel"
+      },
+      "search": {
+        "path": "/search",
+        "query": {
+          "keyword": "{query}"
+        }
+      },
+      "catalog": {
+        "path": "{novelURL}/chapters"
+      },
+      "selectors": {
+        "resultLink": "a",
+        "resultTitle": "h3, h4.novel-title",
+        "resultImage": "img",
+        "title": "h1.novel-title",
+        "author": ".author a",
+        "summary": ".summary .content",
+        "cover": ".novel-cover img, .cover img",
+        "genres": ".categories a",
+        "chapter": ".chapter-list li a[href]",
+        "chapterTitle": ".chapter-title, strong",
+        "nextPage": "a[rel=next]",
+        "content": "#chapter-container #content",
+        "remove": "script, style, nav, iframe, .ads, .ad, .advertisement, .chapter-nav, .hidden",
+        "emptySearchPhrases": [
+          "No novels found",
+          "No results found",
+          "No results",
+          "with 0 results"
+        ],
+        "result": "#latest-updates > .container > ul.novel-list > li.novel-item, #list-novel li.novel-item"
+      },
+      "session": {
+        "path": "/"
+      },
+      "notice": "Chapter text is provided by Novel Phoenix. Your saved chapters and reading progress are preserved.",
+      "content": {
+        "path": "https://novelphoenix.com/novel/{bookSlug}/{chapterSlug}"
+      },
+      "filters": [
+        {
+          "id": "genre",
+          "name": "Genre",
+          "defaultValue": "all",
+          "options": [
+            {
+              "name": "›",
+              "value": "all"
+            },
+            {
+              "name": "Action",
+              "value": "action"
+            },
+            {
+              "name": "Adult",
+              "value": "adult"
+            },
+            {
+              "name": "Adventure",
+              "value": "adventure"
+            },
+            {
+              "name": "Anime",
+              "value": "anime"
+            },
+            {
+              "name": "Arts",
+              "value": "arts"
+            },
+            {
+              "name": "Comedy",
+              "value": "comedy"
+            },
+            {
+              "name": "Drama",
+              "value": "drama"
+            },
+            {
+              "name": "Eastern",
+              "value": "eastern"
+            },
+            {
+              "name": "Ecchi",
+              "value": "ecchi"
+            },
+            {
+              "name": "Fan-fiction",
+              "value": "fan-fiction"
+            },
+            {
+              "name": "Fantasy",
+              "value": "fantasy"
+            },
+            {
+              "name": "Game",
+              "value": "game"
+            },
+            {
+              "name": "Gender Bender",
+              "value": "gender-bender"
+            },
+            {
+              "name": "Harem",
+              "value": "harem"
+            },
+            {
+              "name": "Historical",
+              "value": "historical"
+            },
+            {
+              "name": "Horror",
+              "value": "horror"
+            },
+            {
+              "name": "Isekai",
+              "value": "isekai"
+            },
+            {
+              "name": "Josei",
+              "value": "josei"
+            },
+            {
+              "name": "Lgbt+",
+              "value": "lgbt"
+            },
+            {
+              "name": "Magic",
+              "value": "magic"
+            },
+            {
+              "name": "Magical realism",
+              "value": "magical-realism"
+            },
+            {
+              "name": "Manhua",
+              "value": "manhua"
+            },
+            {
+              "name": "Martial Arts",
+              "value": "martial-arts"
+            },
+            {
+              "name": "Mature",
+              "value": "mature"
+            },
+            {
+              "name": "Mecha",
+              "value": "mecha"
+            },
+            {
+              "name": "Military",
+              "value": "military"
+            },
+            {
+              "name": "Modern life",
+              "value": "modern-life"
+            },
+            {
+              "name": "Movies",
+              "value": "movies"
+            },
+            {
+              "name": "Mystery",
+              "value": "mystery"
+            },
+            {
+              "name": "Other",
+              "value": "other"
+            },
+            {
+              "name": "Psychological",
+              "value": "psychological"
+            },
+            {
+              "name": "Realistic fiction",
+              "value": "realistic-fiction"
+            },
+            {
+              "name": "Reincarnation",
+              "value": "reincarnation"
+            },
+            {
+              "name": "Romance",
+              "value": "romance"
+            },
+            {
+              "name": "School Life",
+              "value": "school-life"
+            },
+            {
+              "name": "Sci-fi",
+              "value": "sci-fi"
+            },
+            {
+              "name": "Seinen",
+              "value": "seinen"
+            },
+            {
+              "name": "Shoujo",
+              "value": "shoujo"
+            },
+            {
+              "name": "Shoujo ai",
+              "value": "shoujo-ai"
+            },
+            {
+              "name": "Shounen",
+              "value": "shounen"
+            },
+            {
+              "name": "Shounen Ai",
+              "value": "shounen-ai"
+            },
+            {
+              "name": "Slice of Life",
+              "value": "slice-of-life"
+            },
+            {
+              "name": "Smut",
+              "value": "smut"
+            },
+            {
+              "name": "Sports",
+              "value": "sports"
+            },
+            {
+              "name": "Supernatural",
+              "value": "supernatural"
+            },
+            {
+              "name": "System",
+              "value": "system"
+            },
+            {
+              "name": "Tragedy",
+              "value": "tragedy"
+            },
+            {
+              "name": "Urban",
+              "value": "urban"
+            },
+            {
+              "name": "Urban life",
+              "value": "urban-life"
+            },
+            {
+              "name": "Video Games",
+              "value": "video-games"
+            },
+            {
+              "name": "War",
+              "value": "war"
+            },
+            {
+              "name": "Wuxia",
+              "value": "wuxia"
+            },
+            {
+              "name": "Xianxia",
+              "value": "xianxia"
+            },
+            {
+              "name": "Xuanhuan",
+              "value": "xuanhuan"
+            },
+            {
+              "name": "Yaoi",
+              "value": "yaoi"
+            },
+            {
+              "name": "Yuri",
+              "value": "yuri"
+            }
+          ]
+        },
+        {
+          "id": "sort",
+          "name": "Sort by",
+          "defaultValue": "popular",
+          "options": [
+            {
+              "name": "Popular",
+              "value": "popular"
+            },
+            {
+              "name": "Recently added",
+              "value": "new"
+            },
+            {
+              "name": "Recently updated",
+              "value": "latest-release"
+            }
+          ]
+        },
+        {
+          "id": "status",
+          "name": "Status",
+          "defaultValue": "all",
+          "options": [
+            {
+              "name": "Any status",
+              "value": "all"
+            },
+            {
+              "name": "Completed",
+              "value": "completed"
+            },
+            {
+              "name": "Ongoing",
+              "value": "ongoing"
+            }
+          ]
+        }
+      ],
+      "filteredBrowse": {
+        "path": "/genre-{filter.genre}/sort-{filter.sort}/status-{filter.status}/all-novel"
+      }
+    },
+    {
+      "schemaVersion": 2,
+      "version": 1,
+      "status": "active",
+      "id": "Skythewood",
+      "name": "Skythewood Translations",
+      "baseURL": "https://skythewood.blogspot.com",
+      "allowedHosts": [
+        "skythewood.blogspot.com",
+        "skythewood.blogspot.sg"
+      ],
+      "search": {
+        "path": "/p/done.html",
+        "filterQuery": true
+      },
+      "browse": {
+        "path": "/p/done.html",
+        "filterQuery": true
+      },
+      "catalog": {
+        "path": "{novelURL}"
+      },
+      "selectors": {
+        "resultLink": "a",
+        "resultTitle": "inkwell-unused",
+        "resultImage": "img",
+        "author": "inkwell-unused",
+        "summary": "inkwell-unused",
+        "cover": ".post-body img",
+        "genres": "inkwell-unused",
+        "chapterTitle": "inkwell-unused",
+        "nextPage": "",
+        "content": ".post-body",
+        "remove": "script, style, nav, iframe, noscript, .ads, .ad, .advertisement, .sharedaddy, .wp-block-buttons, .code-block, .entry-meta, .post-navigation, .post-body a[href*=\"/p/\"], a:matchesOwn((?i)^(next chapter|previous chapter|main page)$)",
+        "emptySearchPhrases": [
+          "No results found"
+        ],
+        "result": ".post-body a[href*=\"/p/\"]:not([href*=\"projects.html\"]):not([href*=\"done.html\"])",
+        "title": "h3.post-title",
+        "chapter": ".post-body a[href~=unused], .post-body a[href*=\"blogspot.\"]:not([href*=\"/p/\"]):not([href*=\"#\"])"
+      },
+      "hostAliases": {
+        "skythewood.blogspot.sg": "skythewood.blogspot.com"
+      },
+      "notice": "Searches the project index. Chapters hosted by other translation groups are not imported."
+    },
+    {
+      "schemaVersion": 3,
+      "version": 1,
+      "status": "active",
+      "id": "Webnovel",
+      "name": "Webnovel",
+      "baseURL": "https://www.webnovel.com",
+      "allowedHosts": [
+        "www.webnovel.com",
+        "webnovel.com",
+        "m.webnovel.com"
+      ],
+      "notice": "Uses a browser session. Connect this source to sign in when required. Locked chapters are not saved as full chapters.",
+      "search": {
+        "path": "/search",
+        "query": {
+          "keywords": "{query}"
+        },
+        "linkBase": "https://www.webnovel.com/book/",
+        "readySelector": ".result-books-container li a[data-bookid], .g_no_result"
+      },
+      "transport": "browser",
+      "browse": {
+        "path": "/",
+        "readySelector": "li.g_col a.g_thumb[data-report-did][href*=\"/book/\"]"
+      },
+      "catalog": {
+        "path": "{novelURL}/catalog",
+        "readySelector": ".j_catalog_list li a"
+      },
+      "content": {
+        "path": "{chapterURL}",
+        "readySelector": ".cha-words, .cha-content._lock"
+      },
+      "selectors": {
+        "result": "li:has(a[data-bid][href*=\"/book/\"]), li.g_col:has(a.g_thumb[data-report-did][href*=\"/book/\"])",
+        "resultLink": "a[data-bid][href*=\"/book/\"], a.g_thumb[data-report-did][href*=\"/book/\"]",
+        "resultTitle": "h3, h4",
+        "resultImage": "img",
+        "title": "h1",
+        "author": "address span",
+        "summary": ".j_synopsis",
+        "cover": "img[src*=\"book-pic.webnovel.com/bookcover/\"]",
+        "genres": ".det-hd-tag",
+        "chapter": ".j_catalog_list li a",
+        "chapterTitle": "strong",
+        "chapterNumber": "i._num",
+        "chapterCount": ".det-hd-detail strong:contains(Chapters) span",
+        "nextPage": "",
+        "content": ".cha-words",
+        "lockedContent": ".cha-content._lock, [class*=\"j_lock_chap_\"]",
+        "remove": "script, style, nav, iframe, .para-comment, .cha-info, .j_para_comment_count",
+        "emptySearchPhrases": [
+          "No results",
+          "No Results",
+          "No books found",
+          "No results found"
+        ],
+        "emptySearchSelector": ".result-books-container > .g_no_result",
+        "lockedChapter": "svg.fr",
+        "freeWhenNotLocked": true,
+        "resultIDAttributes": [
+          "data-bid",
+          "data-report-did"
+        ],
+        "unlistedChapterNotice": ".j_catalog_wrap p.c_warning:contains(More Privileged Chapters)"
+      }
+    }
+  ]
+}
