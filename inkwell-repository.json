@@ -319,7 +319,7 @@
     },
     {
       "schemaVersion": 1,
-      "version": 2,
+      "version": 3,
       "status": "active",
       "id": "LightNovelTo",
       "name": "LightNovel.to",
@@ -362,7 +362,7 @@
         "chapterTitle": ".chapter-title",
         "nextPage": "a[rel=next]",
         "content": ".ln-prose",
-        "remove": "script, style, nav, iframe, .ads, .ad, .advertisement, .chapter-nav, .hidden",
+        "remove": "script, style, nav, iframe, .ads, .ad, .advertisement, .chapter-nav, .hidden, button, [role=dialog], .fc-consent-root, .qc-cmp2-container, [id*=cookie], [class*=consent]",
         "emptySearchPhrases": [
           "No novels found",
           "No results found",
