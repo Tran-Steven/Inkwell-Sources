@@ -1,0 +1,29 @@
+name: Validate source feed
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Check the data-only source catalog
+        run: |
+          python3 - <<'PY'
+          import json, re
+          from urllib.parse import urlparse
+          from pathlib import Path
+          data = json.loads(Path('inkwell-repository.json').read_text())
+          assert data['schemaVersion'] == 1 and 0 < len(data['sources']) <= 64
+          ids = set()
+          for source in data['sources']:
+              assert source['schemaVersion'] in [1, 2, 3, 4]
+              assert isinstance(source['version'], int) and source['version'] > 0
+              assert re.fullmatch(r'[A-Za-z0-9_-]+', source['id']) and source['id'] not in ids
+              ids.add(source['id'])
+              url = urlparse(source['baseURL'])
+              assert url.scheme == 'https' and url.hostname in source['allowedHosts']
+          print(f"Validated {len(ids)} source definitions")
+          PY
